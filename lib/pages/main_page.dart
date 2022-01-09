@@ -9,6 +9,9 @@ import 'package:weather_app_for_internship/services/current_weather_api_provider
 import 'package:weather_app_for_internship/widgets/main_current_weather_view.dart';
 import 'package:weather_app_for_internship/widgets/main_forecast_view.dart';
 
+const String TODAY = 'Today';
+const String FORECAST = 'Forecast';
+
 class MainPage extends StatelessWidget {
   WeatherProvider weatherProvider = WeatherProvider();
   CurrentLocationProvider currentLocationProvider = CurrentLocationProvider();
@@ -16,43 +19,44 @@ class MainPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider<WeatherBloc>(
-      create: (context) => WeatherBloc(weatherProvider, currentLocationProvider)..add(CurrentWeatherLoadEvent()),
-      child: BlocBuilder<WeatherBloc, WeatherState>(
-        builder: (context, state) {
-          return Scaffold(
-            body: (() {
-              if(state.currentIndex == 0) {
-                return mainCurrentWeatherView(context, state);
-              } else if (state.currentIndex == 1) {
-                return mainForecastView(context, state);
+      create: (context) => WeatherBloc(weatherProvider, currentLocationProvider)
+        ..add(CurrentWeatherLoadEvent()),
+      child: BlocBuilder<WeatherBloc, WeatherState>(builder: (context, state) {
+        return Scaffold(
+          body: (() {
+            if (state.currentIndex == 0) {
+              return mainCurrentWeatherView(context, state);
+            } else if (state.currentIndex == 1) {
+              return mainForecastView(context, state);
+            }
+          }()),
+          bottomNavigationBar: BottomNavigationBar(
+            type: BottomNavigationBarType.fixed,
+            currentIndex: state.currentIndex,
+            onTap: (index) {
+              if (index == 0) {
+                BlocProvider.of<WeatherBloc>(context)
+                    .add(CurrentWeatherLoadEvent());
+              } else if (index == 1) {
+                BlocProvider.of<WeatherBloc>(context)
+                    .add(ForecastWeatherLoadEvent());
               }
-            }()),
-            bottomNavigationBar: BottomNavigationBar (
-              type: BottomNavigationBarType.fixed,
-              currentIndex: state.currentIndex,
-              onTap: (index)  {
-                if(index == 0) {
-                  BlocProvider.of<WeatherBloc>(context).add(CurrentWeatherLoadEvent());
-                } else if (index == 1) {
-                  BlocProvider.of<WeatherBloc>(context).add(ForecastWeatherLoadEvent());
-                }
-              },
-              items: [
-                BottomNavigationBarItem(
-                  icon: Icon(CustomIcons.sun),
-                  label: 'Today',
-                  backgroundColor: Colors.blue,
-                ),
-                BottomNavigationBarItem(
-                  icon: Icon(CustomIcons.cloud_moon),
-                  label: 'Forecast',
-                  backgroundColor: Colors.blue,
-                ),
-              ],
-            ),
-          );
-        }
-      ),
+            },
+            items: [
+              BottomNavigationBarItem(
+                icon: Icon(CustomIcons.sun),
+                label: TODAY,
+                backgroundColor: Colors.blue,
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(CustomIcons.cloud_moon),
+                label: FORECAST,
+                backgroundColor: Colors.blue,
+              ),
+            ],
+          ),
+        );
+      }),
     );
   }
 }

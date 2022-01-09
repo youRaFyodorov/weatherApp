@@ -1,7 +1,6 @@
 import 'package:location/location.dart';
 
 class CurrentLocationProvider {
-
   Future getCurrentLocation() async {
     Location location = Location();
 
@@ -13,13 +12,13 @@ class CurrentLocationProvider {
     if (!_serviceEnabled) {
       _serviceEnabled = await location.requestService();
       if (!_serviceEnabled) {
-      return;
+        return;
       }
     }
 
     _permissionGranted = await location.hasPermission();
     if (_permissionGranted == PermissionStatus.denied) {
-    _permissionGranted = await location.requestPermission();
+      _permissionGranted = await location.requestPermission();
       if (_permissionGranted != PermissionStatus.granted) {
         return;
       }

@@ -2,9 +2,10 @@ import 'package:weather_app_for_internship/models/weather.dart';
 
 abstract class WeatherState {
   final int currentIndex;
-  
+
   WeatherState({required this.currentIndex});
 }
+
 class InitialState extends WeatherState {
   static const int defoltIndex = 0;
 
@@ -14,14 +15,17 @@ class InitialState extends WeatherState {
 class WeatherContentState extends WeatherState {
   Weather weather;
 
-  WeatherContentState({required this.weather, required int index}) : super(currentIndex: index);
+  WeatherContentState({required this.weather, required int index})
+      : super(currentIndex: index);
 }
 
 class WeatherLoadingState extends WeatherState {
   WeatherLoadingState({required int index}) : super(currentIndex: index);
 }
+
 class WeatherErrorState extends WeatherState {
   final String errorMessage;
 
-  WeatherErrorState({required this.errorMessage,required int index}) : super(currentIndex: index);
+  WeatherErrorState({required this.errorMessage, required int index})
+      : super(currentIndex: index);
 }

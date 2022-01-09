@@ -23,7 +23,7 @@ Widget currentWeatherView(BuildContext context, WeatherContentState state) {
                 CustomIcons.direction,
                 size: 20.0,
                 color: Colors.green,
-            ),
+              ),
             ),
             Expanded(
               child: Text(

@@ -3,7 +3,8 @@ import 'package:weather_app_for_internship/bloc/weather_state.dart';
 import 'package:weather_app_for_internship/functions/wind_direction.dart';
 import 'package:weather_app_for_internship/presentation/custom_icons_icons.dart';
 
-Widget extendedCurrentWeatherView(BuildContext context, WeatherContentState state) {
+Widget extendedCurrentWeatherView(
+    BuildContext context, WeatherContentState state) {
   return Column(
     crossAxisAlignment: CrossAxisAlignment.start,
     children: <Widget>[
@@ -93,7 +94,10 @@ Widget extendedCurrentWeatherView(BuildContext context, WeatherContentState stat
                     ),
                   ),
                   Container(
-                    margin: EdgeInsets.only(top: 5.0,left: 65.0,),
+                    margin: EdgeInsets.only(
+                      top: 5.0,
+                      left: 65.0,
+                    ),
                     child: Text(
                       '${state.weather.currentWeather.windSpeed} km/h',
                       style: TextStyle(fontSize: 17.0),

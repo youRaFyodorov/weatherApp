@@ -7,9 +7,9 @@ getWeatherIcon(String _icon) {
     case '01n':
       return CustomIcons.moon;
     case '02d':
-      return CustomIcons.cloud_sun;  
+      return CustomIcons.cloud_sun;
     case '02n':
-      return CustomIcons.cloud_moon;  
+      return CustomIcons.cloud_moon;
     case '03d':
       return CustomIcons.cloud;
     case '03n':
@@ -21,20 +21,20 @@ getWeatherIcon(String _icon) {
     case '09d':
       return CustomIcons.rain;
     case '09n':
-      return CustomIcons.rain_inv;  
+      return CustomIcons.rain_inv;
     case '10d':
-      return CustomIcons.rain;  
+      return CustomIcons.rain;
     case '10n':
-      return CustomIcons.rain_inv; 
+      return CustomIcons.rain_inv;
     case '11d':
-      return CustomIcons.cloud_flash;  
+      return CustomIcons.cloud_flash;
     case '11n':
-      return CustomIcons.cloud_flash_inv; 
+      return CustomIcons.cloud_flash_inv;
     case '13d':
-      return CustomIcons.snow;  
+      return CustomIcons.snow;
     case '13n':
-      return CustomIcons.snow_inv;   
-    default: 
-      return CustomIcons.mist; 
+      return CustomIcons.snow_inv;
+    default:
+      return CustomIcons.mist;
   }
 }

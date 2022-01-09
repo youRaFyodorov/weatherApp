@@ -15,5 +15,5 @@ windDirection(int _windDeg) {
     return 'S';
   } else {
     return 'SE';
-  } 
+  }
 }

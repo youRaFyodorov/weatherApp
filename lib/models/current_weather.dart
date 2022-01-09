@@ -11,8 +11,19 @@ class CurrentWeather {
   final int windSpeed;
   final int windDeg;
 
+  CurrentWeather(
+      {required this.city,
+      required this.country,
+      required this.timezone,
+      required this.temp,
+      required this.main,
+      required this.icon,
+      required this.pop,
+      required this.humidity,
+      required this.pressure,
+      required this.windSpeed,
+      required this.windDeg});
 
-  CurrentWeather({required this.city, required this.country, required this.timezone, required this.temp, required this.main, required this.icon, required this.pop, required this.humidity, required this.pressure, required this.windSpeed, required this.windDeg});
   factory CurrentWeather.fromJson(Map<String, dynamic> json) {
     return CurrentWeather(
       city: json['city']['name'],
@@ -21,7 +32,7 @@ class CurrentWeather {
       temp: (json['list'][0]['main']['temp']).toInt(),
       main: json['list'][0]['weather'][0]['main'],
       icon: json['list'][0]['weather'][0]['icon'],
-      pop: (json['list'][0]['pop'].toDouble() * 100) .toInt(),
+      pop: (json['list'][0]['pop'].toDouble() * 100).toInt(),
       humidity: (json['list'][0]['main']['humidity']).toInt(),
       pressure: json['list'][0]['main']['pressure'].toInt(),
       windSpeed: (json['list'][0]['wind']['speed'].toDouble() * 3.6).toInt(),
